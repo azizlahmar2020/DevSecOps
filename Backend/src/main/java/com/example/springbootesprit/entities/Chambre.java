@@ -33,9 +33,9 @@ public class Chambre implements Serializable {
     public Bloc getBloc() {
         return bloc;
     }
-    @Transient
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Reservation>reservations;
+    
+    @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)
+    private Set<Reservation> reservations;
 
 
 
