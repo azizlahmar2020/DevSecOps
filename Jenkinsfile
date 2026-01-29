@@ -63,80 +63,20 @@ pipeline {
                 '''
             }
         }
-
-        stage('Security Scan') {
-            steps {
-                echo '🔒 Analyse de sécurité des images Docker...'
-                sh '''
-                    # Exemple avec Trivy (à installer au préalable)
-                    # trivy image ${DB_IMAGE}
-                    # trivy image ${BACKEND_IMAGE}
-                    # trivy image ${FRONTEND_IMAGE}
-                    echo "Security scan à configurer avec Trivy ou autre outil"
-                '''
-            }
-        }
-
-        stage('Push Images to Registry') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo '📤 Push des images vers le registry Docker...'
-                script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
-                        sh '''
-                            docker push ${DB_IMAGE}
-                            docker push ${BACKEND_IMAGE}
-                            docker push ${FRONTEND_IMAGE}
-                        '''
-                    }
-                }
-            }
-        }
-
-        stage('Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo '🚀 Déploiement de l\'application...'
-                sh '''
-                    # Option 1: Déploiement avec Docker Compose
-                    # docker-compose up -d
-                    
-                    # Option 2: Déploiement sur Kubernetes
-                    # kubectl apply -f k8s/
-                    
-                    # Option 3: Chargement dans kind pour test local
-                    kind load docker-image ${DB_IMAGE} || echo "kind non disponible"
-                    kind load docker-image ${BACKEND_IMAGE} || echo "kind non disponible"
-                    kind load docker-image ${FRONTEND_IMAGE} || echo "kind non disponible"
-                    
-                    echo "Déploiement effectué"
-                '''
-            }
-        }
     }
 
     post {
         always {
-            echo '🧹 Nettoyage...'
-            sh '''
-                # Nettoyage des images dangling
-                docker image prune -f || true
-            '''
+            echo "Pipeline terminé."
         }
         success {
-            echo '✅ Pipeline exécuté avec succès!'
-            // Notifications (email, Slack, etc.)
+            echo "✅ Déploiement réussi !"
+            echo "Frontend: http://localhost:4200"
+            echo "Backend: http://localhost:8089/foyer"
+            echo "Database: localhost:3306"
         }
         failure {
-            echo '❌ Le pipeline a échoué!'
-            // Notifications d'erreur
-        }
-        unstable {
-            echo '⚠️ Le pipeline est instable!'
+            echo "❌ Échec du pipeline."
         }
     }
 }
