@@ -101,6 +101,7 @@ pipeline {
         cleanup {
             echo "Suppression du cluster Kind..."
             sh "kind delete cluster --name ${KIND_CLUSTER_NAME}"
+       
         }
     }
 }
