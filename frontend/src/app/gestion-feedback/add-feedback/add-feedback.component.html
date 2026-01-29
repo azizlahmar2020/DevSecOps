@@ -1,0 +1,18 @@
+<form [formGroup]="addFed" (ngSubmit)="onSubmit()" class="form-container">
+
+
+  <div class="mb-3">
+    <label for="commentaire" class="form-label">commentaire:</label>
+    <input type="text" id="commentaire" formControlName="commentaire" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label for="idFoyer" class="form-label">id foyer:</label>
+    <input type="text" id="idFoyer" formControlName="idFoyer" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label for="idUniversite" class="form-label">idUniversite :</label>
+    <input type="text" id="idUniversite" formControlName="idUniversite" class="form-control">
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter le feedback</button>
+</form>

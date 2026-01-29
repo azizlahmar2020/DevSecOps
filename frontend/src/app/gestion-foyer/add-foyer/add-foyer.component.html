@@ -1,0 +1,27 @@
+<form [formGroup]="addFoy" (ngSubmit)="onSubmit()" class="form-container">
+
+
+
+  <div class="mb-3">
+    <label for="nomFoyer" class="form-label">nom duFoyer:</label>
+    <input type="text" id="nomFoyer" formControlName="nomFoyer" class="form-control">
+  </div>
+
+
+  <div class="form-check">
+    <input type="radio" id="trueValue" formControlName="archived" [value]="false" class="form-check-input" [checked]="addFoy.controls['archived'].value === false" (change)="addFoy.controls['archived'].setValue(false)">
+    <label class="form-check-label" for="trueValue">Non</label>
+  </div>
+  <div class="form-check">
+    <input type="radio" id="falseValue" formControlName="archived" [value]="true" class="form-check-input" [checked]="addFoy.controls['archived'].value === true" (change)="addFoy.controls['archived'].setValue(true)">
+    <label class="form-check-label" for="falseValue">Oui</label>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="capaciteFoyer" class="form-label">capaciteFoyer :</label>
+    <input type="text" id="capaciteFoyer" formControlName="capaciteFoyer" class="form-control">
+    
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter le foyer</button>
+</form>

@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <div *ngIf="foyer" class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">Informations </h5>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="card-text"><strong>ID Foyer:</strong> {{ foyer.idFoyer}}</p>
+          <p class="card-text"><strong> nomFoyer:</strong> {{ foyer.nomFoyer  }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="card-text"><strong> archived:</strong> {{ foyer.archived ? 'Oui' : 'Non' }}</p>
+          <p class="card-text"><strong>capaciteFoyer:</strong> {{ foyer.capaciteFoyer }}</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <button class="btn btn-primary" (click)="addfoyer()">Ajouté</button>
+      </div>
+
+   
+
+      <div class="text-center mt-3">
+        <button class="btn btn-success" (click)="affecterFoyerAUniversite()">Affecter à la universite</button>
+        <button class="btn btn-danger" (click)="desaffecterFoyerAUniversite()">Désaffecter de la universite</button>
+      </div>
+    </div>
+  </div>
+</div>

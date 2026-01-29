@@ -1,0 +1,54 @@
+<button class="btn btn-danger btn-sm action-button" (click)="addChambre()">
+  Ajouter chambre
+</button>
+<div class="input-group mt-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text">
+      <i class="material-icons">search</i>
+    </span>
+  </div>
+  <input [(ngModel)]="searchTerm" placeholder="Rechercher Chambre" class="form-control">
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+
+      <th>Numéro de Chambre</th>
+      <th>Type de Chambre</th>
+
+      <th>Nom Bloc</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bl of chambres">
+
+      <td>{{ bl.numeroChambre }}</td>
+      <td>{{ bl.typeC }}</td>
+      <td>{{ bl.bloc }}</td>
+      <td>
+        <button class="btn btn-primary btn-sm action-button" (click)="showDetails(bl.idChambre)">
+
+          <i class="fas fa-info-circle"></i> Détails
+        </button>
+        <button class="btn btn-warning btn-sm action-button" (click)="editCh(bl.idChambre)">
+          <i class="fas fa-edit"></i> Modifier
+        </button>
+        <button class="btn btn-danger btn-sm action-button" (click)="deleteCh(bl)">
+          <i class="fas fa-trash-alt"></i> Supprimer
+        </button>
+        <div>
+          <button class="btn btn-sm action-button" (click)="generateQRCode(bl)">
+
+            <i class="fas btn-warning"></i> Qr Code
+         </button>
+
+
+          <img *ngIf="bl.qrCodeUrl" [src]="bl.qrCodeUrl" alt="QR Code">
+
+
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

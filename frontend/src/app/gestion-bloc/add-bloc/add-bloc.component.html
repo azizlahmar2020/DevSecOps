@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Ajouter un Bloc</h2>
+
+  <form [formGroup]="addBl" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-group mb-3">
+      <label for="capacite_bloc" class="form-label">Capacité du bloc:</label>
+      <input type="text" id="capacite_bloc" formControlName="capaciteBloc" class="form-control" />
+      <div *ngIf="addBl.get('capaciteBloc')?.invalid && (addBl.get('capaciteBloc')?.touched || addBl.get('capaciteBloc')?.dirty)" class="alert alert-danger">
+        <div *ngIf="addBl.get('capaciteBloc')?.hasError('required')">La capacité du bloc est obligatoire !</div>
+        Capacite doit etre >0
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="nom_bloc" class="form-label">Nom du bloc:</label>
+      <input type="text" id="nom_bloc" formControlName="nomBloc" class="form-control" />
+      <div *ngIf="addBl.get('nomBloc')?.invalid && (addBl.get('nomBloc')?.touched || addBl.get('nomBloc')?.dirty)" class="alert alert-danger">
+        <div *ngIf="addBl.get('nomBloc')?.hasError('required')">Le nom du bloc est obligatoire !</div>
+        <!-- Ajoutez d'autres messages d'erreur au besoin -->
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="addBl.invalid">Ajouter Bloc</button>
+  </form>
+</div>

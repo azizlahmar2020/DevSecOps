@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div *ngIf="reservation" class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">Informations de la réservation</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="card-text"><strong>ID de la Réservation:</strong> {{ reservation.idReservation }}</p>
+          <p class="card-text"><strong>Année Universitaire:</strong> {{ reservation.anneeUniversite | date:'yyyy-MM-dd' }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="card-text"><strong>Est Valide:</strong> {{ reservation.estValide ? 'Oui' : 'Non' }}</p>
+          <p class="card-text"><strong>Commentaire:</strong> {{ reservation.commentaire }}</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <button class="btn btn-primary" (click)="addReservation()">Réserver</button>
+      </div>
+      <div class="mt-4">
+        <label for="selectedchambres">Sélectionner une chambre :</label>
+        <select id="selectedchambres" [(ngModel)]="selectedchambres" class="form-control">
+          <option *ngFor="let ch of chambres" [value]="ch.idChambre">{{ ch?.numeroChambre }}</option>
+        </select>
+      </div>
+
+      <div class="text-center mt-3">
+        <button class="btn btn-success" (click)="affecterReservationAChambre()">Affecter à la chambre</button>
+        <button class="btn btn-danger" (click)="desaffecterReservationDeChambre()">Désaffecter de la chambre</button>
+      </div>
+        </div>
+  </div>
+</div>

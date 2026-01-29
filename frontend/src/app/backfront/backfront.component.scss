@@ -1,0 +1,59 @@
+// Violet shade for the bottom
+.page-bottom {
+  background-color: #8a2be2; // Change to the desired violet shade
+  padding: 20px;
+  color: #fff; // Text color for the bottom
+}
+
+// Hover effect for elements on the page
+section,
+.card,
+.btn,
+.form-group {
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+section:hover,
+.card:hover,
+.btn:hover,
+.form-group:hover {
+  transform: translateY(3px); // Adjusted to make it closer to the button
+}
+
+/* Optional: Add a shadow effect on hover for cards */
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, #007bff, #0056b3); // Gradient of blue for the card background
+}
+
+/* Optional: Adjust the hover brightness for buttons */
+.btn:hover {
+  filter: brightness(110%); // Stronger hover effect for brightness
+  background: linear-gradient(to right, #007bff, #0056b3); // Gradient of blue for the button background
+  color: #fff; // Text color on hover
+}
+
+/* Styles for the bottom section */
+.container-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px; // Adjusted padding for better visibility
+  color: #fff; // Adjusted text color for better visibility
+}
+
+/* Styles for the initial state of the button */
+.btn-res {
+  background: #fff; // Initial button color white
+  color: linear-gradient(to right, #007bff, #0056b3); // Gradient of blue for the text inside the button
+}
+
+/* Styles for the h1 element */
+h1 {
+  font-family: 'Your Preferred Font', sans-serif; // Change 'Your Preferred Font' to the desired font
+  font-weight: bold; // Make the font bold
+  background: linear-gradient(to right, #007bff, #0056b3); // Gradient of blue for the h1 background
+  -webkit-background-clip: text;
+  color: transparent; // Hide the text color, background will be visible through text
+}
