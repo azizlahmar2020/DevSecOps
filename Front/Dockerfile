@@ -20,7 +20,7 @@ FROM nginx:alpine
 # COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the built application from the build stage
-COPY --from=build /app/dist/front /usr/share/nginx/html
+COPY --from=build /app/dist/mini-projet /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
