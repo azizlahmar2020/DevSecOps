@@ -1,106 +1,66 @@
 pipeline {
     agent any
 
-    environment {
-        // Configuration Docker Hub (à adapter)
-        DOCKER_REGISTRY = "docker.io"
-        DOCKER_CREDENTIALS_ID = "dockerhub-credentials"
-        
-        // Noms des images
-        DB_IMAGE = "foyer-database:latest"
-        BACKEND_IMAGE = "foyer-backend:latest"
-        FRONTEND_IMAGE = "foyer-frontend:latest"
-    }
-
     stages {
-        stage('Checkout') {
-            steps {
-                echo '📥 Récupération du code source...'
-                checkout scm
-            }
-        }
 
-        stage('Check Tools') {
+        stage('Build Database') {
             steps {
-                echo '🔍 Vérification des outils installés...'
-                sh '''
-                    echo "=== Docker ==="
-                    docker --version
-                    
-                    echo "=== Java & Maven ==="
-                    java -version
-                    mvn -v
-                    
-                    echo "=== Node & npm ==="
-                    node -v
-                    npm -v
-                '''
-            }
-        }
-
-        stage('Build Database Image') {
-            steps {
-                echo '🗄️ Construction de l\'image Docker pour la base de données...'
-                dir('DataBase') {
-                    sh '''
-                        docker build -t ${DB_IMAGE} .
-                    '''
+                dir('database') {
+                    sh 'docker build -t devsecops-mysql .'
                 }
+            }
+        }
+
+        stage('Run Database') {
+            steps {
+                sh '''
+                docker rm -f mysql || true
+                docker run -d \
+                  --name mysql \
+                  -p 3306:3306 \
+                  devsecops-mysql
+                '''
             }
         }
 
         stage('Build Backend') {
             steps {
-                echo '⚙️ Construction du Backend Spring Boot...'
                 dir('Backend') {
-                    sh '''
-                        # Test et build Maven
-                        mvn clean test
-                        mvn package -DskipTests
-                        
-                        # Construction de l'image Docker
-                        docker build -t ${BACKEND_IMAGE} .
-                    '''
+                    sh 'docker build -t devsecops-backend .'
                 }
+            }
+        }
+
+        stage('Run Backend') {
+            steps {
+                sh '''
+                docker rm -f backend || true
+                docker run -d \
+                  --name backend \
+                  --link mysql:mysql \
+                  -p 8089:8089 \
+                  devsecops-backend
+                '''
             }
         }
 
         stage('Build Frontend') {
             steps {
-                echo '🎨 Construction du Frontend Angular...'
                 dir('Front') {
-                    sh '''
-                        # Installation des dépendances
-                        npm ci --legacy-peer-deps
-                        
-                        # Build de l'application Angular
-                        npm run build -- --configuration production
-                        
-                        # Construction de l'image Docker
-                        docker build -t ${FRONTEND_IMAGE} .
-                    '''
+                    sh 'docker build -t devsecops-front .'
                 }
             }
         }
 
-        stage('Run Tests') {
-            parallel {
-                stage('Backend Tests') {
-                    steps {
-                        echo '🧪 Exécution des tests Backend...'
-                        dir('Backend') {
-                            sh 'mvn test'
-                        }
-                    }
-                }
-                stage('Frontend Tests') {
-                    steps {
-                        echo '🧪 Exécution des tests Frontend...'
-                        dir('Front') {
-                            sh 'npm run test -- --watch=false --browsers=ChromeHeadless'
-                        }
-                    }
-                }
+        stage('Run Frontend') {
+            steps {
+                sh '''
+                docker rm -f frontend || true
+                docker run -d \
+                  --name frontend \
+                  -p 4200:80 \
+                  devsecops-front
+                '''
             }
         }
 

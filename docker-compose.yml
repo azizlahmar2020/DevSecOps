@@ -2,18 +2,20 @@ version: '3.8'
 
 services:
   # Base de données MySQL
-  database:
-    build: ./DataBase
-    container_name: foyer-database
+  mysql:
+    build: ./database
+    container_name: mysql
     environment:
-      MYSQL_DATABASE: projet
+      MYSQL_DATABASE: devsecopsdb
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: devsecops
+      MYSQL_PASSWORD: devsecops
     ports:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
-      - foyer-network
+      - devsecops-network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
@@ -22,34 +24,34 @@ services:
   # Backend Spring Boot
   backend:
     build: ./Backend
-    container_name: foyer-backend
+    container_name: backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/projet?createDatabaseIfNotExist=true
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/devsecopsdb
+      SPRING_DATASOURCE_USERNAME: devsecops
+      SPRING_DATASOURCE_PASSWORD: devsecops
       SERVER_PORT: 8089
     ports:
       - "8089:8089"
     depends_on:
-      database:
+      mysql:
         condition: service_healthy
     networks:
-      - foyer-network
+      - devsecops-network
     restart: on-failure
 
   # Frontend Angular
   frontend:
     build: ./Front
-    container_name: foyer-frontend
+    container_name: frontend
     ports:
       - "4200:80"
     depends_on:
       - backend
     networks:
-      - foyer-network
+      - devsecops-network
 
 networks:
-  foyer-network:
+  devsecops-network:
     driver: bridge
 
 volumes:
