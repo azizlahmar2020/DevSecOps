@@ -1,0 +1,24 @@
+
+<form (ngSubmit)="updateReservation()">
+
+  <div class="form-group">
+    <label for="dateInput" class="form-label">Année Universitaire:</label>
+    <input type="date" id="anneeUniversite" name="anneeUniversite" [(ngModel)]="reservation.anneeUniversite" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="estValide">Est Valide : {{reservation.estValide}}</label>
+    <input type="radio" id="estValideOui" name="estValide" value="true" [(ngModel)]="reservation.estValide" class="form-check-input">
+    <label for="estValideOui" class="form-check-label">Oui</label>
+    <input type="radio" id="estValideNon" name="estValide" value="false" [(ngModel)]="reservation.estValide" class="form-check-input">
+    <label for="estValideNon" class="form-check-label">Non</label>
+  </div>
+
+  <div class="form-group">
+    <label for="commentaire">Commentaire</label>
+    <textarea id="commentaire" name="commentaire" [(ngModel)]="reservation.commentaire" rows="4" class="form-control"></textarea>
+  </div>
+
+  <button type="submit">Sauvegarder</button>
+
+</form>

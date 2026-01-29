@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Update Foyer</h2>
+  <form (ngSubmit)="updateFoyer()">
+    <div  class="form-group">
+      <label for="nomFoyer">Nom Foyer:</label>
+      <input type="text" id="nomFoyer" [(ngModel)]="foyer.nomFoyer" name="nomFoyer" class="form-control" required>
+    </div>
+    <div  class="form-group">
+      <label for="capaciteFoyer">Capacite Foyer:</label>
+      <input type="number" id="capaciteFoyer" [(ngModel)]="foyer.capaciteFoyer" name="capaciteFoyer" class="form-control" required>
+    </div>
+    <div  class="form-group">
+      <label for="archived">Archived:</label>
+      <input type="checkbox" id="archived" [(ngModel)]="foyer.archived" name="archived" class="form-check-input">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Foyer</button>
+  </form>
+</div>

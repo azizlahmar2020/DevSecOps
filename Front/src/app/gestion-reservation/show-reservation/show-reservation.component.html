@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <button class="btn btn-success btn-sm action-button" (click)="addReservation()">
+    Ajouter réservation
+  </button>
+  <div class="input-group mt-2">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="material-icons">search</i>
+      </span>
+    </div>
+    <input [(ngModel)]="searchTerm" placeholder="Rechercher réservations" class="form-control">
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Année Universitaire</th>
+        <th>Est Valide ?</th>
+        <th>Commentaire</th>
+        <th>Chambre Réservée</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let res of filteredReservations">
+        <td>{{ res.idReservation }}</td>
+        <td>{{ res.anneeUniversite | date:'yyyy-MM-dd' }}</td>
+        <td>
+          <span class="badge badge-info" style="color: black;">{{ res.estValide ? 'Oui' : 'Non' }}</span>
+        </td>
+        <td>{{ res.commentaire }}</td>
+        <td>
+          <span *ngIf="res.chambre">Chambre {{ res.chambre.numeroChambre }}</span>
+        </td>
+        <td>
+          <button class="btn btn-primary btn-sm action-button" (click)="showDetails(res.idReservation)">
+            <i class="fas fa-info-circle"></i> Détails
+          </button>
+          <button class="btn btn-warning btn-sm action-button" (click)="editReservation(res.idReservation)">
+            <i class="fas fa-edit"></i> Modifier
+          </button>
+          <button class="btn btn-danger btn-sm action-button" (click)="deleteReservation(res)">
+            <i class="fas fa-trash-alt"></i> Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

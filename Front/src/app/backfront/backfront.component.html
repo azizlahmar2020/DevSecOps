@@ -1,0 +1,32 @@
+<section>
+  <div class="container mt-4 d-flex align-items-center justify-content-center">
+    <div class="container mt-4">
+      <b><h1 class="text-center">Choisir la chambre à réserver <i class="fas fa-key"></i></h1></b>
+      <br><br>
+      <hr class="my-4"> <!-- Added a thin line to separate -->
+<br><br><br><br><br>
+      <!-- Ajouter un champ de saisie ou une liste déroulante pour la note de filtrage -->
+      <!-- Ajouter un bouton pour déclencher le filtrage -->
+
+      <div class="row">
+        <div class="col-md-4" *ngFor="let chambre of (filteredChambres.length > 0 ? filteredChambres : chambres)">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-bed icon"></i>Numéro de Chambre: {{ chambre.numeroChambre }}
+              </h5>
+              <p class="card-text"> Type de Chambre: {{ chambre.typeC }}</p>
+              <p class="card-text"> Nom du Bloc: {{ chambre.bloc }}</p>
+
+              <!-- Example in a template -->
+              <!-- In your HTML template where you have the button for details -->
+              <button type="button" class="btn btn-res">
+                <i class="fas fa-key" style="color: beige;"></i> Réserver
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

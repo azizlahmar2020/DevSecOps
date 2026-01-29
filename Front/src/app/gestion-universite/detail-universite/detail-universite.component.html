@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <div *ngIf="universite" class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">Informations de la universite</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="card-text"><strong>ID de la universite:</strong> {{ universite.idUniversite }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="card-text"><strong>Nom de universite:</strong> {{ universite.nomUniversite }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="card-text"><strong>adress universite:</strong> {{ universite.adress }}</p>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <button class="btn btn-primary" (click)="addUniversite()">Ajouté</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+

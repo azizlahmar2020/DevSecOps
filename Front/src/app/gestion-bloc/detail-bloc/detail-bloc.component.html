@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>Détails du Bloc</h2>
+
+  <div *ngIf="bloc" class="card">
+    <div class="card-header">
+      <h3 class="card-title">{{ bloc.nomBloc }}</h3>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Capacité du Bloc:</th>
+            <td>{{ bloc.capaciteBloc }}</td>
+          </tr>
+          <tr>
+            <th>Le Nombre de chambres réservées dans ce Bloc est :</th>
+            <td>{{ count }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="width: 900px; height: 900px;">
+        <div style="position:absolute;">
+          <canvas id="myChart" style="width: 600px; height: 600px; margin-left: 50%; margin-top: 10%;"></canvas>
+        </div>
+      </div>
+
+      <!-- Tableau pour afficher les détails des chambres -->
+      <h3>Liste des chambres :</h3>
+      <table class="table" *ngIf="bloc && chambres.length > 0">
+        <thead>
+          <tr>
+
+            <th>Numéro de Chambre</th>
+            <th>Type de Chambre</th>
+            <!-- Ajoutez d'autres colonnes au besoin -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cham of chambres">
+
+            <td>{{ cham.numeroChambre }}</td>
+            <td>{{ cham.typeC }}</td>
+
+            <!-- Ajoutez d'autres colonnes au besoin -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="!bloc">
+    <p>Loading...</p>
+  </div>
+</div>

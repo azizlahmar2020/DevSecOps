@@ -1,0 +1,16 @@
+<div class="main-content">
+  <img src="assets/img/sajjelni.png" alt="Welcome Image" class="welcome-image">
+  <div class="overlay-text">
+    <h1>BIENVENUE DANS<img src="assets/img/logo.png" alt="Logo" width="200" height="90"></h1>
+    <p>L'application Web intuitive créée par le groupe Code Wizard. Découvrez notre plate-forme <br> complète dédiée à simplifier votre expérience universitaire, la gestion des foyers <br>et les réservations des chambres, le tout à portée de clic.</p>
+    <p class="subscribe-message">
+      <button class="signup-button">
+        <i class="fas fa-graduation-cap"></i> S'inscrire dans notre université
+      </button>
+      <button class="reserve-button">
+        <i class="fas fa-bed"></i> Réserver une chambre dans le foyer
+      </button>
+    </p>
+          </div>
+  <button *ngIf="showScrollButton" (click)="scrollToBottom()" class="scroll-down-button">Scroll Down</button>
+</div>

@@ -1,0 +1,104 @@
+.main-content {
+  position: relative;
+  text-align: center;
+  padding: 50px;
+  background-color: #8D19AA;
+  
+
+  
+  .welcome-image {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  h1 {
+    position: absolute;
+    top: 25%;
+    font-weight: bold; /* Add this line to make the text bold */
+    font-family: MerriweatherSans-VariableFont_wght;
+    left: 20%;
+    transform: translate(0, -50%);
+    text-align: left;
+    color: #fff;
+    font-size: 3em; /* Increase the font size to make it bigger */
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.3;
+  }
+
+  p {
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    transform: translate(0, -50%);
+    text-align: left;
+    color: #fff;
+    max-width: 80%;
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+
+  .subscribe-message {
+    position: absolute;
+    top: 49%;
+    left: 20%;
+    transform: translate(0, -50%);
+    text-align: left;
+    color: #fff;
+    max-width: 80%;
+    font-size: 1.2em;
+    line-height: 1.5;
+
+    .signup-button,
+    .signup-button,
+    .reserve-button {
+
+      padding: 10px 20px; /* Padding for better visual appearance */
+      margin-right: 10px; /* Adjust as needed */
+      border: none;
+      border-radius: 40px; /* Adjust the border-radius for rounded corners */
+    
+      /* Common styles */
+      color: white; /* White text color */
+      cursor: pointer;
+    }    
+    .signup-button {
+
+      background-color: #f5ebe0; /* White background color for the first button */
+      color: black; /* Black text color for the first button */
+    }
+    
+    .reserve-button {
+
+      background-color: #2b2d42; /* Black background color for the second button */
+    }
+    
+    .signup-button:hover,
+    .reserve-button:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow on hover */
+      color: #8D19AA; /* Brighten the text color on hover */
+        }
+      }
+
+  .scroll-down-button {
+    position: fixed;
+    bottom: 50px;
+    left: 45%;
+    padding: 15px 30px;
+    background-color: transparent;
+    color: #DCE2EC;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5em;
+    text-decoration: underline;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .scroll-down-button.ng-hide {
+    opacity: 0;
+  }
+}

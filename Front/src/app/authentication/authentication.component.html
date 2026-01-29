@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Add Font Awesome CSS link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .custom-card {
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+      margin: 0 10px;
+    }
+
+    .separator i {
+      font-size: 1.5em;
+      color: #007bff;
+    }
+
+    .card-title i,
+    .form-label i,
+    .btn i,
+    .forgot-password i {
+      margin-right: 10px;
+    }
+
+    .forgot-password {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container card-container">
+    <div class="card custom-card">
+      <div class="card-body">
+        <div class="separator">
+          <h1 class="card-title"><i class="fas fa-sign-in-alt"></i> Login</h1>
+        </div>
+        <form (submit)="login()">
+          <div class="mb-3">
+            <label for="email" class="form-label"><i class="fas fa-at"></i> Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="loginRequest.email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="loginRequest.password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+          <div class="forgot-password">
+            <a routerLink="/forgot-password"><i class="fas fa-question-circle"></i> Forgot Password?</a>
+            <a routerLink="/registry"><i class="fas fa-question-circle"></i> Registry</a>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

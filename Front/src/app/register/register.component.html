@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Add Font Awesome CSS link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .custom-card {
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+      margin: 0 10px;
+    }
+
+    .separator i {
+      font-size: 1.5em;
+      color: #007bff;
+    }
+
+    .card-title i,
+    .form-label i,
+    .btn i,
+    .forgot-password i {
+      margin-right: 10px;
+    }
+
+    .forgot-password {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container card-container">
+    <div class="card custom-card">
+      <div class="card-body">
+        <div class="separator">
+          <h1 class="card-title"><i class="fas fa-user-plus"></i> Registration</h1>
+        </div>
+        <form (submit)="register()">
+          <div class="mb-3">
+            <label for="firstname" class="form-label"><i class="fas fa-user"></i> First Name</label>
+            <input type="text" class="form-control" id="firstname" [(ngModel)]="registerRequest.firstname" name="firstname" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastname" class="form-label"><i class="fas fa-user"></i> Last Name</label>
+            <input type="text" class="form-control" id="lastname" [(ngModel)]="registerRequest.lastname" name="lastname" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label"><i class="fas fa-at"></i> Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="registerRequest.email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="registerRequest.password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus"></i> Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+/* Add this style at the beginning of your CSS file */
+
+body {
+  background: linear-gradient(to right, #007bff, #0056b3);
+}
+
+.navbar {
+  background: linear-gradient(to right, #007bff, #0056b3) !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link,
+.navbar-nav .btn,
+.navbar-nav .navbar-btn {
+  margin-top: 5px;
+  font-weight: bold;
+  color: white !important;
+  font-family: Righteous;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  transition: color 0.3s, transform 0.3s; /* Include transform in the transition property */
+  text-decoration: none;
+}
+
+.navbar-nav {
+  margin-left: 670px;
+}
+
+.navbar-nav .nav-link {
+  margin-right: 20px;
+  font-size: 20px;
+  transition: color 0.3s, transform 0.3s; /* Include transform in the transition property */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .navbar-btn:hover {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1); /* Increase the scale on hover */
+}
+
+.navbar-logo img {
+  height: 120px;
+}
+
+.navbar-nav .btn,
+.navbar-nav .navbar-btn {
+  border-radius: 50px;
+  border: 6px solid #BB6433;
+  background: rgba(255, 255, 255, 0.00);
+  width: 180px;
+  height: 62px;
+  font-family: Righteous;
+  margin-top: 4px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  width: 170px;
+  border: 6px solid white;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.00);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.navbar-nav .btn:hover,
+.navbar-nav .navbar-btn:hover {
+  background-color: white;
+  color: #fff;
+  transform: scale(1.9); /* Increase the scale on hover */
+}
+
+.navbar .gh-text {
+  color: white;
+  font-family: Pacifico;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 0px;
+}
